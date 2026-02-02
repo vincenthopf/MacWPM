@@ -3,101 +3,125 @@
 //  MacWPM
 //
 //  Created by Wilmer Terrero on 19/5/24.
+//  Upgraded for macOS 26 Tahoe
 //
 
 import SwiftUI
 
 struct AuthorizeView: View {
+    let tracker: WPMTracker
+    @Environment(\.dismiss) private var dismiss
+    @State private var permissionCheckTimer: Timer?
+
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 24) {
+            // App Icon
             Image("MacWPMIcon")
                 .resizable()
-                .frame(width: 60, height: 60)
-                .padding(.top, 40)
-            
-            Text("Authorize MacWPM")
-                .font(.title)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 80, height: 80)
+                .padding(.top, 20)
+
+            // Title
+            Text("Accessibility Permission Required")
+                .font(.title2)
                 .fontWeight(.bold)
-            
-            VStack(spacing: 8) {
-                Text("MacWPM needs your permission to emulate keystrocks to record your WPM.")
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                
-                Text("Follow these steps to authorize it:")
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                
+
+            // Description
+            Text("MacWPM needs Accessibility permission to monitor your typing speed across all apps.")
+                .font(.body)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.secondary)
+                .padding(.horizontal, 20)
+
+            Spacer()
+                .frame(height: 10)
+
+            // Action Buttons
+            actionButtons
+
+            // Instructions
+            Text("Toggle **MacWPM** in the list, then return here.")
+                .font(.callout)
+                .foregroundStyle(.tertiary)
+                .multilineTextAlignment(.center)
+
+            // Manual check button
+            Button("I've Enabled It") {
+                checkAndDismiss()
             }
-            .padding(.horizontal, 40)
-            
-            
-            VStack(alignment: .leading, spacing: 10) {
-                Button(action: {
-                    openSystemSettings()
-                }) {
-                    HStack {
-                        Image(systemName: "gear")
-                        Text("Open System Settings")
-                    }
-                    .font(.system(size: 16, weight: .semibold))
-                }
-                .buttonStyle(PlainButtonStyle())
-                
-                Button(action: {
-                    openPrivacySettings()
-                }) {
-                    HStack {
-                        Image(systemName: "hand.raised.fill")
-                        Text("Privacy & Security")
-                    }
-                    .font(.system(size: 16, weight: .semibold))
-                }
-                .buttonStyle(PlainButtonStyle())
-                
-                Button(action: {
-                    openAccessibilitySettings()
-                }) {
-                    HStack {
-                        Image(systemName: "figure.stand")
-                        Text("Accessibility")
-                    }
-                    .font(.system(size: 16, weight: .semibold))
-                }
-                .buttonStyle(PlainButtonStyle())
-                
-                Button(action: {
-                    // Assuming this is a function to guide the user to enable the app
-                }) {
-                    HStack {
-                        Image(systemName: "checkmark.circle.fill")
-                        Text("Enable MacWPM.app")
-                    }
-                    .font(.system(size: 16, weight: .semibold))
-                }
-                .buttonStyle(PlainButtonStyle())
-            }
-            .padding(.horizontal, 40)
-            .padding(.bottom, 40)
+            .buttonStyle(.bordered)
+            .controlSize(.regular)
+
+            Spacer()
+                .frame(height: 20)
+        }
+        .frame(width: 400, height: 350)
+        .background(.ultraThinMaterial)
+        .onAppear {
+            startPermissionPolling()
+        }
+        .onDisappear {
+            stopPermissionPolling()
         }
     }
-    
-    func openSystemSettings() {
-        let url = URL(string: "x-apple.systempreferences:")!
+
+    @ViewBuilder
+    private var actionButtons: some View {
+        if #available(macOS 26, *) {
+            GlassEffectContainer {
+                primaryActionButton
+            }
+        } else {
+            primaryActionButton
+        }
+    }
+
+    private var primaryActionButton: some View {
+        Button {
+            openAccessibilitySettings()
+        } label: {
+            Label("Open Accessibility Settings", systemImage: "lock.shield")
+                .frame(minWidth: 200)
+        }
+        .conditionalGlassEffect()
+        .controlSize(.large)
+    }
+
+    // MARK: - Permission Handling
+
+    private func openAccessibilitySettings() {
+        // Direct link to Accessibility pane in Privacy & Security
+        let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
         NSWorkspace.shared.open(url)
     }
-    
-    func openPrivacySettings() {
-        let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy")!
-        NSWorkspace.shared.open(url)
+
+    private func startPermissionPolling() {
+        // Poll every 2 seconds to check if permission was granted
+        permissionCheckTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+            Task { @MainActor in
+                if AXIsProcessTrusted() {
+                    stopPermissionPolling()
+                    tracker.setupEventMonitors()
+                    dismiss()
+                }
+            }
+        }
     }
-    
-    func openAccessibilitySettings() {
-        let url = URL(string: "x-apple.systempreferences:com.apple.preference.universalaccess")!
-        NSWorkspace.shared.open(url)
+
+    private func stopPermissionPolling() {
+        permissionCheckTimer?.invalidate()
+        permissionCheckTimer = nil
+    }
+
+    private func checkAndDismiss() {
+        if AXIsProcessTrusted() {
+            tracker.setupEventMonitors()
+            dismiss()
+        }
     }
 }
 
 #Preview {
-    AuthorizeView()
+    AuthorizeView(tracker: WPMTracker())
 }

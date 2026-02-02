@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1B2C3D42026010100000001 /* WPMTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D42026010100000002 /* WPMTracker.swift */; };
+		A1B2C3D42026010100000003 /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D42026010100000004 /* MenuBarContentView.swift */; };
+		A1B2C3D42026010100000005 /* LiquidGlassModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D42026010100000006 /* LiquidGlassModifiers.swift */; };
 		F00FAEBE2BFA95D4002A7B77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00FAEBD2BFA95D4002A7B77 /* Assets.xcassets */; };
 		F00FAEC12BFA95D4002A7B77 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00FAEC02BFA95D4002A7B77 /* Preview Assets.xcassets */; };
-		F00FAEC92BFA9639002A7B77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FAEC82BFA9639002A7B77 /* AppDelegate.swift */; };
 		F047B3CD2BFA9B7200C273CF /* MacWPMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047B3CC2BFA9B7200C273CF /* MacWPMApp.swift */; };
 		F047B3D12BFAB4CE00C273CF /* AuthorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047B3D02BFAB4CE00C273CF /* AuthorizeView.swift */; };
 		F047B3D42BFAB83E00C273CF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = F047B3D32BFAB83E00C273CF /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1B2C3D42026010100000002 /* WPMTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WPMTracker.swift; sourceTree = "<group>"; };
+		A1B2C3D42026010100000004 /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContentView.swift; sourceTree = "<group>"; };
+		A1B2C3D42026010100000006 /* LiquidGlassModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassModifiers.swift; sourceTree = "<group>"; };
 		F00FAEB62BFA95D2002A7B77 /* MacWPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacWPM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00FAEBD2BFA95D4002A7B77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00FAEC02BFA95D4002A7B77 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F00FAEC22BFA95D4002A7B77 /* MacWPM.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacWPM.entitlements; sourceTree = "<group>"; };
-		F00FAEC82BFA9639002A7B77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F047B3CC2BFA9B7200C273CF /* MacWPMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacWPMApp.swift; sourceTree = "<group>"; };
 		F047B3D02BFAB4CE00C273CF /* AuthorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeView.swift; sourceTree = "<group>"; };
 		F047B3D52BFABA1800C273CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -58,8 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				F047B3CC2BFA9B7200C273CF /* MacWPMApp.swift */,
-				F00FAEC82BFA9639002A7B77 /* AppDelegate.swift */,
+				A1B2C3D42026010100000002 /* WPMTracker.swift */,
+				A1B2C3D42026010100000004 /* MenuBarContentView.swift */,
 				F047B3D02BFAB4CE00C273CF /* AuthorizeView.swift */,
+				A1B2C3D42026010100000006 /* LiquidGlassModifiers.swift */,
 				F00FAEBD2BFA95D4002A7B77 /* Assets.xcassets */,
 				F00FAEC22BFA95D4002A7B77 /* MacWPM.entitlements */,
 				F047B3D52BFABA1800C273CF /* Info.plist */,
@@ -152,9 +158,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F00FAEC92BFA9639002A7B77 /* AppDelegate.swift in Sources */,
-				F047B3D12BFAB4CE00C273CF /* AuthorizeView.swift in Sources */,
 				F047B3CD2BFA9B7200C273CF /* MacWPMApp.swift in Sources */,
+				A1B2C3D42026010100000001 /* WPMTracker.swift in Sources */,
+				A1B2C3D42026010100000003 /* MenuBarContentView.swift in Sources */,
+				F047B3D12BFAB4CE00C273CF /* AuthorizeView.swift in Sources */,
+				A1B2C3D42026010100000005 /* LiquidGlassModifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +222,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +279,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -289,7 +297,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_ASSET_PATHS = "\"MacWPM/Preview Content\"";
-				DEVELOPMENT_TEAM = LF3VQ6Z37G;
+				DEVELOPMENT_TEAM = DKBDSNC22B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -300,9 +308,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wilmerterrero.MacWPM;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentHopf.MTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -317,9 +325,9 @@
 				CODE_SIGN_ENTITLEMENTS = MacWPM/MacWPM.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"MacWPM/Preview Content\"";
-				DEVELOPMENT_TEAM = LF3VQ6Z37G;
+				DEVELOPMENT_TEAM = DKBDSNC22B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -330,9 +338,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
-				MARKETING_VERSION = 1.0.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wilmerterrero.MacWPM;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.VincentHopf.MTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -368,7 +376,7 @@
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.2;
+				minimumVersion = 2.8.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
